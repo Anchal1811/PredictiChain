@@ -1,0 +1,20 @@
+services:
+  backend:
+    build: .
+    volumes:
+      - .:/app
+    # Set the working directory to Backend so internal paths work
+    working_dir: /app/Backend
+    command: python src/engine.py
+
+  frontend:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    depends_on:
+      - backend
+    # Set the working directory to Frontend so Streamlit finds its app folder
+    working_dir: /app/Frontend
+    command: streamlit run app/main.py --server.port=8501 --server.address=0.0.0.0

@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+venv/
+.DS_Store
+# Keep the structure, but avoid uploading massive data if you have it
+# Backend/Data/raw/*.csv
